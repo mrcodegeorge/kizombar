@@ -27,7 +27,15 @@ class StaffController {
         
         $tasks = [];
         foreach ($assignments as $a) {
-            $log = $this->log->getTodaysLog($a['sop_id'], $user_id, $today, $a['shift']);
+            $effective_shift = $a['shift'];
+            if ($effective_shift === 'all') {
+                $hour = (int)date('H');
+                if ($hour >= 4 && $hour < 12) $effective_shift = 'morning';
+                elseif ($hour >= 12 && $hour < 20) $effective_shift = 'evening';
+                else $effective_shift = 'night';
+            }
+
+            $log = $this->log->getTodaysLog($a['sop_id'], $user_id, $today, $effective_shift);
             
             $tasks[] = [
                 'sop_id' => $a['sop_id'],
