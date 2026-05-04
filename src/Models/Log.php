@@ -22,7 +22,7 @@ class Log {
     }
 
     public function getLogSteps($log_id) {
-        $query = "SELECT ls.*, s.step_text 
+        $query = "SELECT ls.*, s.step_text, s.requires_photo 
                   FROM sop_log_steps ls 
                   JOIN sop_steps s ON ls.step_id = s.id 
                   WHERE ls.sop_log_id = ?";
