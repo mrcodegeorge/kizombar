@@ -55,6 +55,11 @@ class StaffController {
             $log = $this->log->getTodaysLog($sop_id, $user_id, $today, $shift);
         }
         
+        if (!$log) {
+            header("Location: index.php?action=dashboard&error=log_initialization_failed");
+            exit();
+        }
+        
         $sop_data = $this->sop->getById($sop_id);
         $steps = $this->log->getLogSteps($log['id']);
         
