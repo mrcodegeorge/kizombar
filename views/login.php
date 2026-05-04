@@ -209,6 +209,9 @@ $staffForPin = $staffForPin ?? [];
         Staff can also use <a href="index.php?action=login&tab=pin" class="text-brand text-decoration-none">Quick PIN Login →</a>
         <?php endif; ?>
     </p>
+    <div class="text-center mt-5">
+        <p class="text-muted small mb-0">Built with ❤️ by <strong>George Asiedu Annan</strong></p>
+    </div>
 </div>
 </body>
 </html>

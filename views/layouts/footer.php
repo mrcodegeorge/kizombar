@@ -2,6 +2,10 @@
         </div> <!-- End row -->
     </div> <!-- End container -->
 
+    <div class="text-center py-4 mb-5 pb-5">
+        <p class="text-muted small mb-0">Built with ❤️ by <strong>George Asiedu Annan</strong></p>
+    </div>
+
     <?php if(isset($_SESSION['user_id'])): ?>
     <!-- Mobile Bottom Navigation -->
     <div class="bottom-nav">
