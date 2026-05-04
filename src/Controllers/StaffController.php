@@ -46,13 +46,22 @@ class StaffController {
         $user_id = $_SESSION['user_id'];
         $today = date('Y-m-d');
         
-        $log = $this->log->getTodaysLog($sop_id, $user_id, $today, $shift);
+        // If shift is 'all', determine the effective shift based on current time
+        $effective_shift = $shift;
+        if ($shift === 'all') {
+            $hour = (int)date('H');
+            if ($hour >= 4 && $hour < 12) $effective_shift = 'morning';
+            elseif ($hour >= 12 && $hour < 20) $effective_shift = 'evening';
+            else $effective_shift = 'night';
+        }
+        
+        $log = $this->log->getTodaysLog($sop_id, $user_id, $today, $effective_shift);
         
         if (!$log) {
             $branch = $_SESSION['user_branch'] ?? 'kizobar';
-            $log_id = $this->log->createLog($sop_id, $user_id, $today, $shift, $branch);
+            $log_id = $this->log->createLog($sop_id, $user_id, $today, $effective_shift, $branch);
             $this->log->initLogSteps($log_id, $sop_id);
-            $log = $this->log->getTodaysLog($sop_id, $user_id, $today, $shift);
+            $log = $this->log->getTodaysLog($sop_id, $user_id, $today, $effective_shift);
         }
         
         if (!$log) {
