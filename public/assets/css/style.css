@@ -1,0 +1,308 @@
+/* Kizo SOP Manager - Mobile First Light Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --brand-primary: #0F3D3E; /* Deep Green/Dark Blue brand color */
+    --brand-secondary: #E8F5E9; /* Light green tint for cards/backgrounds */
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+    --success: #10B981;
+    --pending: #EF4444;
+    --border-color: #E5E7EB;
+    
+    --touch-target: 48px; /* Minimum 44px, using 48px for comfort */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+    padding-top: 60px; /* Space for top bar */
+    padding-bottom: 80px; /* Space for bottom nav */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--brand-primary);
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.card:active {
+    transform: scale(0.98);
+}
+
+/* Top Bar (Mobile) */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 1030;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.top-bar .brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--brand-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--brand-secondary);
+    color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* Bottom Navigation (Mobile) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1030;
+    box-shadow: 0 -1px 3px rgba(0,0,0,0.05);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 500;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.nav-item.active {
+    color: var(--brand-primary);
+}
+
+.nav-item:active {
+    background-color: var(--bg-color);
+}
+
+/* Forms & Inputs */
+.form-control, .form-select {
+    min-height: var(--touch-target);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    padding: 12px 16px;
+    font-size: 1rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(15, 61, 62, 0.1);
+    background-color: var(--card-bg);
+}
+
+/* Buttons */
+.btn {
+    min-height: var(--touch-target);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: white;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: #0b2d2d;
+    border-color: #0b2d2d;
+}
+
+/* Checklist Items */
+.checklist-row {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.checklist-row:active {
+    background-color: var(--brand-secondary);
+}
+
+.checklist-row.completed {
+    background-color: var(--brand-secondary);
+}
+
+.checklist-row.completed .step-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.custom-checkbox {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    transition: all 0.2s;
+    background-color: white;
+}
+
+.checklist-row.completed .custom-checkbox {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.checklist-row.completed .custom-checkbox i {
+    color: white;
+    display: block !important;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.status-badge.pending {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--pending);
+}
+
+.status-badge.completed {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+/* Sticky Submit Button */
+.sticky-bottom-action {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    z-index: 1040;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+}
+
+/* Success Overlay */
+.success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--brand-primary);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.success-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.success-icon-container {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-icon-container i {
+    font-size: 3rem;
+    color: var(--success);
+}
+
+@keyframes scaleUp {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* Utilities */
+.fw-600 { font-weight: 600; }
+.text-brand { color: var(--brand-primary); }
+
+/* Desktop overrides (keep mobile first, but don't break desktop entirely) */
+@media (min-width: 768px) {
+    body { padding-bottom: 0; }
+    .bottom-nav { display: none; }
+    .sticky-bottom-action {
+        position: static;
+        box-shadow: none;
+        padding: 20px 0;
+        background: transparent;
+        border: none;
+    }
+}

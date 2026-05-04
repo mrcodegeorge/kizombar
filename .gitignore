@@ -1,0 +1,9 @@
+# Kizo SOP Manager Git Ignore
+sessions/*
+!sessions/.gitkeep
+public/uploads/*
+!public/uploads/.gitkeep
+.DS_Store
+*.log
+node_modules/
+.env
